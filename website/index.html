@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>HTML Forms User Input</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="submit.html">
+    <script src="final.js"></script>
+    <script>
+    //([a-zA-Z0-9\.-]+)@([a-z0-9-]+).([a-z]{2,8})(.[a-z]{2,8})
+    //pattern="/([a-zA-Z0-9\.-]+)@([a-z0-9-]+).([a-z]{2,8})(.[a-z]{2,8})*/"
+     
+    </script>
+
+
+</head>
+
+<body>
+    <div>
+        <form action="submit.html">
+
+
+            <h2>HTML Form</h2>
+
+            <table>
+                <tr>
+                    <td>Full Name: </td>
+                    <td>
+                        <input type="text" name="full_name" id="full_name" onblur="nameCheck();"
+                            title="Minimum two words with four characters each" required> <span
+                            id="checkingName"></span> <br><br>
+                    </td>
+                </tr>
+
+
+                <tr>
+
+                    <td>Email ID:</td>
+                    <td>
+                        <input type="text" name="emailId" id="emailId" pattern="([a-zA-Z0-9\.-]+)@([a-z0-9]+)\.([a-z]{2,8})(\.[a-z]{2,8})*"  placeholder="simple@domain.com(.co.in)" onblur="validate();" required>
+                        <span id="input"></span> <br><br>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>Phone Number:</td>
+                    <td>
+                        <input type="tel" id="phone" name="phone" onkeyup="return phCheck(this);" pattern="[0-9()-]{14}" maxlength="14" required>
+                        <span> <img id="logo" src="" alt=""></span> <span id="states"></span> <br><br>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <button type="submit" class="editbtn" value="passValue" onclick="passValue();">Submit</button>
+                        <br>
+                    </td>
+                </tr>
+
+            </table>
+
+        </form>
+
+
+    </div>
+
+</body>
+
+</html>

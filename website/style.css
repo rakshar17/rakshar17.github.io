@@ -1,0 +1,29 @@
+body{
+    margin: 5%;
+    padding: 0%;
+    box-sizing: border-box;
+    background-color: #e8f3f8 ;
+}
+
+.random{
+    text-align: center;
+    text-decoration: underline;
+    color: darkblue;    
+    
+}
+
+
+input{
+    padding: 5px;
+    width: 270px ;
+    font-size: inherit;
+}
+
+
+.editbtn{
+    
+    position: relative;
+    width: 150px;
+    padding: 10px;
+    
+}
