@@ -46,7 +46,7 @@
                 <tr>
                     <td>Phone Number:</td>
                     <td>
-                        <input type="tel" id="phone" name="phone" onkeyup="return phCheck(this);" pattern="[0-9()-]{14}" maxlength="14" required>
+                        <input type="tel" id="phone" name="phone" onkeyup="phCheck();" pattern="\(?(\d{3})\)?-?(\d{3})-(\d{4})" maxlength="14" required>
                         <span> <img id="logo" src="" alt=""></span> <span id="states"></span> <br><br>
                     </td>
                 </tr>
