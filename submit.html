@@ -7,41 +7,12 @@
     <title>Validation Form</title>
     <link rel="stylesheet" href="style.css">
 
-    <script>
-        var storedigit;  //variable declaration to store the 4 digit randomly generated number
 
-        //4 digit Random Number Generation Function
-        function randomNum() {
-            var fourdigitsrandom = Math.floor(1000 + Math.random() * 9000);
-            document.getElementById("fourdigit").innerHTML = fourdigitsrandom;
-            storedigit = fourdigitsrandom;
-        }
-
-        //A function to compare the generated number with the input and take action accordingly , this function is called after submitting the validation form
-        function complete() {
-            var compare = document.getElementById("input").value; //Digit are stored in variable compare
-            var pattern = /^[0-9]{4}$/;                              
-            if (compare.match(pattern)) {
-                if (compare == storedigit) {
-                    document.getElementById("page").innerHTML = "Validation Successful!";
-                    window.location.replace("http://pixel6.co/");
-                }
-                else {                 
-                    window.location.replace("http://pixel6.co/404");
-                }
-            }
-        }
-        
-
-        
-
-
-    </script>
 </head>
 
-<body onload="randomNum();" id="page">
+<body id="submitPage">
     <!--Paragraph for displaying the digits, The digits can be seen in the top of the page-->
-    <p id="fourdigit" class="random"></p>
+    <p id="fourDigit" class="random"></p>
 
     <Form action="#">
 
@@ -55,20 +26,49 @@
 
         <label>
             Please enter in the following box and submit for confirmation:
-            <input type="text" pattern="[0-9]{4}" id="input" placeholder="Enter OTP" title="Hint : 4 Digit Number"
+            <input type="text" pattern="[0-9]{4}" id="otpInput" placeholder="Enter OTP" title="Hint : 4 Digit Number"
                 required>
         </label> <br><br>
 
 
         <!--On clicking the button complete function is called for redirecting the page to pixel6 webpage-->
-        <button type="submit" class="editbtn" onclick="complete();" id="validate">Validate</button><br>
+        <button type="submit" class="editbtn" id="validate">Validate</button><br>
     </Form>
 
-    <!-- To get the input from the previous page which is stored in the local storage-->
+
     <script>
+        //Generating 4 digit random number
+        document.getElementById("submitPage").onload = () => { randomNum(); }
+
+        var storedigit;  //variable declaration to store the 4 digit randomly generated number
+
+        function randomNum() {
+            var fourdigitsrandom = Math.floor(1000 + Math.random() * 9000);
+            document.getElementById("fourDigit").innerText = fourdigitsrandom;
+            storedigit = fourdigitsrandom;
+        }
+
+        document.getElementById("validate").onclick = () => { formComplete(); }
+        //A function to compare the generated number with the input and take action accordingly , this function is called after submitting the validation form
+        function formComplete() {
+            var compare = document.getElementById("otpInput").value;
+            var pattern = /^[0-9]{4}$/;
+            if (compare.match(pattern)) {
+                if (compare == storedigit) {
+                    document.getElementById("submitPage").innerText = "Validation Successful!";
+                    window.location.replace("http://pixel6.co/");
+                }
+                else {
+                    window.location.replace("http://pixel6.co/404");
+                }
+            }
+        }
+
+        //Local storage of name and number stored from previous page
         document.getElementById("nameCheck").innerHTML = localStorage.getItem("nameValue");
-        document.getElementById("phoneNum").innerHTML = localStorage.getItem("phonenumber");
+        document.getElementById("phoneNum").innerHTML = localStorage.getItem("phoneNumber");
     </script>
+
 </body>
 
 </html>

@@ -1,48 +1,52 @@
+
 //Function for checking whether the name is valid or invalid
+document.getElementById("fullName").onblur = () => { nameCheck() };
 function nameCheck() {
-    var name = document.getElementById("full_name").value;
-    var pattern = /^[^\s]([a-zA-Z\s]{3,})([a-zA-Z]{4,})(\s[a-zA-Z])?$/;
-    if (pattern.test(name)) {
-        document.getElementById("checkingName").innerHTML = "Valid Name";
+    var inputText = document.getElementById("fullName").value;
+    var pattSet = /^[^\s]([a-zA-Z\s]{3,})([a-zA-Z]{4,})(\s[a-zA-Z])*$/;
+    if (inputText.match(pattSet)) {
+        document.getElementById("validatingName").innerText = "Valid Name";
     }
     else {
-        document.getElementById("checkingName").innerHTML = "Invalid Name";
+        document.getElementById("validatingName").innerText = "Invalid Name";
     }
 }
+
+
 
 
 //Email Validation
+document.getElementById("emailId").onblur = () => { validate() };
 function validate() {
     var emailEntered = document.getElementById("emailId").value;
     var mailFormat = /^([a-zA-Z0-9\.-]+)@([a-z0-9]+)\.([a-z]{2,8})(\.[a-z]{2,8})*$/;
-
     if (emailEntered.match(mailFormat)) {
-        document.getElementById("input").innerHTML = "Valid";
+        document.getElementById("validatingEmail").innerText = "Valid Email ID";
     }
     else {
-        document.getElementById("input").innerHTML = "Invalid, Try Again";
+        document.getElementById("validatingEmail").innerText = "Invalid, Try Again";
     }
-
 }
 
 
-//Function For Phone Number    
 
-var a, b;  //Variable declaration for storing the sliced values
-//a = stores the first 3 digits for along with characters
-//b = stores value from variable a and the next 3 digitd
+//Function For Phone Number   
+document.getElementById("phone").onkeyup = () => { phCheck() };
 
-function phCheck(f) {
+var logoPro, simPro;  //Variable declaration for storing the sliced values
+                      //logoPro = stores the first 3 digits for along with characters, sim card provider logo
+                      //simPro = stores value from variable a and the next 3 digitd, sim card provider state
+
+function phCheck() {
     var phone = document.getElementById("phone").value;
-    var chck = new RegExp("[0-9]{0,15}");
+    var chck = /[0-9]{0,15}/;
     if (phone.match(chck)) {
         if (phone.length >= 3 && phone.length <= 5) {
-
-            f = document.getElementById("phone");
-            f.value = "(" + f.value.slice(0, 3) + ")" + "-";
-            a = f.value;
+            sliceNum = document.getElementById("phone");
+            sliceNum.value = "(" + sliceNum.value.slice(0, 3) + ")" + "-";
+            logoPro = sliceNum.value;
             //console.log(a);
-            var firstvalue = a.slice(1, 4);
+            var firstvalue = logoPro.slice(1, 4);
             if (firstvalue >= 621 && firstvalue <= 720) {
 
                 document.getElementById("logo").src = "Jio.png"
@@ -66,12 +70,12 @@ function phCheck(f) {
 
 
         else if (phone.length > 5 && phone.length == 9) {
-            f = document.getElementById("phone");
+            sliceNum = document.getElementById("phone");
 
-            f.value = a + f.value.slice(6, 9) + "-";
-            b = f.value;
+            sliceNum.value = logoPro + sliceNum.value.slice(6, 9) + "-";
+            simPro = sliceNum.value;
             //console.log(b);
-            var secondvalue = b.slice(6, 9);
+            var secondvalue = simPro.slice(6, 9);
             var state;
             switch (secondvalue) {
                 case "101":
@@ -189,8 +193,11 @@ function phCheck(f) {
                     state = "Invalid State Code";
             }
 
-            document.getElementById("states").innerHTML = (" , " + state);
+            document.getElementById("states").innerText = (" , " + state);
         }
+    }
+    else {
+
     }
 }
 
@@ -198,14 +205,19 @@ function phCheck(f) {
 
 
 //This function is used to pass the value from html form page to validation page using local storage
+document.getElementById("formSub").onclick = () => { passValue() };
+
 function passValue() {
-    var fullName = document.getElementById("full_name").value;
-    var a = fullName.lastIndexOf(' ');           // last occurence of space
-    var firstName = fullName.substring(0, a);   // first name
-    var lastName = fullName.substring(a + 1);    //last name
-    var phoneno = document.getElementById("phone").value;
+    var fullName = document.getElementById("fullName").value;
+    var lastSpace = fullName.lastIndexOf(' ');           // last occurence of space
+    var firstName = fullName.substring(0, lastSpace);   // first name
+    var phoneNo = document.getElementById("phone").value;
     localStorage.setItem("nameValue", firstName);
-    localStorage.setItem("phonenumber", phoneno);
-    return false;
+    localStorage.setItem("phoneNumber", phoneNo);
+    return true;
 
 }
+
+   
+
+
