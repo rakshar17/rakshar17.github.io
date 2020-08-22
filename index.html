@@ -11,19 +11,20 @@
         <form action="submit.html">
             <h2>HTML Form</h2>
             <label>Full Name :</label>
-            <input type="text" name="fullName" id="fullName" title="Minimum two words with four characters each" required><span id="validatingName"></span> <br><br>
+            <input type="text" name="fullName" id="fullName" pattern = "[^\s]([a-zA-Z\s]{3,})([a-zA-Z]{4,})(\s[a-zA-Z])*" title="Minimum two words with four characters each" required> <span id="validatingName"></span> <br><br>
 
 
             <label>Email ID :</label>
-            <input type="text" name="emailId" id="emailId" placeholder="simple@domain.com(.co.in)" required>
+            <input type="text" name="emailId" id="emailId" pattern="([a-zA-Z0-9\.-]+)@([a-z0-9]+)\.([a-z]{2,8})(\.[a-z]{2,8})*" placeholder="simple@domain.com(.co.in)" required>
             <span id="validatingEmail"></span> <br><br>
 
 
-            <label>Phone Number :</label>
-            <input type="tel" id="phone" name="phone" maxlength="14" required>
+            <label>Phone No. :</label>
+            <input type="text" id="phoneNum" name="phoneNum" pattern="\(?(\d{3})\)?[ .-]?(\d{3})[ .-]?(\d{4})" maxlength="14" required>
             <span> <img id="logo" src="" alt=""></span> <span id="states"></span> <br><br>
+            
 
-            <button type="submit" class="editbtn" value="passValue" id="formSub">Submit</button>
+            <button type="submit" class="editbtn" value="passValue" id="submit" >Submit</button>
             <br>
         </form>
     </div>

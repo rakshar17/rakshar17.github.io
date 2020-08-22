@@ -1,12 +1,12 @@
 
 //Function for checking whether the name is valid or invalid
-document.getElementById("fullName").onblur = () => { nameCheck() };
+document.getElementById("fullName").onblur = () => nameCheck();
 function nameCheck() {
     var inputText = document.getElementById("fullName").value;
     var pattSet = /^[^\s]([a-zA-Z\s]{3,})([a-zA-Z]{4,})(\s[a-zA-Z])*$/;
     if (inputText.match(pattSet)) {
         document.getElementById("validatingName").innerText = "Valid Name";
-    }
+   }
     else {
         document.getElementById("validatingName").innerText = "Invalid Name";
     }
@@ -14,9 +14,8 @@ function nameCheck() {
 
 
 
-
 //Email Validation
-document.getElementById("emailId").onblur = () => { validate() };
+document.getElementById("emailId").onblur = () => validate();
 function validate() {
     var emailEntered = document.getElementById("emailId").value;
     var mailFormat = /^([a-zA-Z0-9\.-]+)@([a-z0-9]+)\.([a-z]{2,8})(\.[a-z]{2,8})*$/;
@@ -31,46 +30,43 @@ function validate() {
 
 
 //Function For Phone Number   
-document.getElementById("phone").onkeyup = () => { phCheck() };
+document.getElementById("phoneNum").onkeyup = () => phCheck();
 
 var logoPro, simPro;  //Variable declaration for storing the sliced values
-                      //logoPro = stores the first 3 digits for along with characters, sim card provider logo
-                      //simPro = stores value from variable a and the next 3 digitd, sim card provider state
+//logoPro = stores the first 3 digits for along with characters, sim card provider logo
+//simPro = stores value from variable a and the next 3 digitd, sim card provider state
 
 function phCheck() {
-    var phone = document.getElementById("phone").value;
-    var chck = /[0-9]{0,15}/;
-    if (phone.match(chck)) {
-        if (phone.length >= 3 && phone.length <= 5) {
-            sliceNum = document.getElementById("phone");
+    var phoneCheck = document.getElementById("phoneNum").value;
+    var pattCheck = /[0-9]{0,15}/;
+    if (phoneCheck.match(pattCheck)) {
+        if (phoneCheck.length >= 3 && phoneCheck.length <= 5) {
+            sliceNum = document.getElementById("phoneNum");
             sliceNum.value = "(" + sliceNum.value.slice(0, 3) + ")" + "-";
             logoPro = sliceNum.value;
             //console.log(a);
             var firstvalue = logoPro.slice(1, 4);
             if (firstvalue >= 621 && firstvalue <= 720) {
-
                 document.getElementById("logo").src = "Jio.png"
-
-
             }
             else if (firstvalue >= 801 && firstvalue <= 920) {
                 document.getElementById("logo").src = "Idea.jpg";
-
             }
             else if (firstvalue >= 921 && firstvalue <= 999) {
                 document.getElementById("logo").src = "Vodafone.png";
-
-
             }
             else {
-                document.getElementById("logo").alt = "Invalid Number";
+                document.getElementById("logo").alt = "Invalid ,";                
+                document.getElementById("submit").addEventListener("click",function(event){
+                    event.preventDefault();
+                });                  
+                       
             }
-
+          
         }
 
-
-        else if (phone.length > 5 && phone.length == 9) {
-            sliceNum = document.getElementById("phone");
+        else if (phoneCheck.length > 5 && phoneCheck.length == 9) {
+            sliceNum = document.getElementById("phoneNum");
 
             sliceNum.value = logoPro + sliceNum.value.slice(6, 9) + "-";
             simPro = sliceNum.value;
@@ -190,34 +186,46 @@ function phCheck() {
                     state = "Puducherry";
                     break;
                 default:
-                    state = "Invalid State Code";
-            }
+                   document.getElementById("submit").addEventListener("click", function(event){
+                       event.preventDefault();
+                   })
+              }      
 
-            document.getElementById("states").innerText = (" , " + state);
+            document.getElementById("states").innerText = ( state); 
+        
         }
-    }
-    else {
-
-    }
+        
+        
+    }  
+   
 }
 
 
 
 
+
+
+
+
 //This function is used to pass the value from html form page to validation page using local storage
-document.getElementById("formSub").onclick = () => { passValue() };
+document.getElementById("submit").onclick = () => passValue();
 
 function passValue() {
     var fullName = document.getElementById("fullName").value;
     var lastSpace = fullName.lastIndexOf(' ');           // last occurence of space
     var firstName = fullName.substring(0, lastSpace);   // first name
-    var phoneNo = document.getElementById("phone").value;
+    var phoneNo = document.getElementById("phoneNum").value;
     localStorage.setItem("nameValue", firstName);
     localStorage.setItem("phoneNumber", phoneNo);
     return true;
 
 }
 
-   
+
+
+
+
+
+
 
 
