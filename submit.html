@@ -51,19 +51,21 @@
         
         var countClick = 0;
         document.getElementById("validate").addEventListener("click", () => {
-            countClick += 1;
-            console.log(countClick);
-            var compare = document.getElementById("otpInput").value; 
-            if (compare == storedigit) {
-                document.getElementById("submitPage").innerText = "Validation Successful!";
-                window.location.replace("http://pixel6.co/");
-            }
-            else {
-                if (countClick == 3) {
-                    window.location.replace("http://pixel6.co/404");
+            var compare = document.getElementById("otpInput").value;
+            var regx = /^[0-9]{4}$/;
+            if (compare.match(regx)) {
+                countClick += 1;
+                console.log(countClick);                
+                if (compare == storedigit) {
+                    document.getElementById("submitPage").innerText = "Validation Successful!";
+                    window.location.replace("http://pixel6.co/");
+                }
+                else {
+                    if (countClick == 3) {
+                        window.location.replace("http://pixel6.co/404");
+                    }
                 }
             }
-            
         });
 
 
