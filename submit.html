@@ -8,22 +8,30 @@
     <link rel="stylesheet" href="style.css">
 
 
+
 </head>
 
 <body id="submitPage">
     <!--Paragraph for displaying the digits, The digits can be seen in the top of the page-->
     <p id="fourDigit" class="random"></p>
 
-    <Form action="">
+    <form action="">
         <h2>Validation Form</h2>
+
         <div>
             <label>
-                Dear <span id="nameCheck"></span>,<br><br>
-                Thank you for your enquiry.
-                A 4 digit verification number has been sent to your phone number: </label> <span id="phoneNumb"></span>
+                Dear <span id="nameCheck"></span>,
+            </label>
         </div>
-        <div>
 
+        <div> Thank you for your enquiry.</div>
+
+        <div>
+            <label> A 4 digit verification number has been sent to your phone number: </label> <span
+                id="phoneNumb"></span>
+        </div>
+
+        <div>
             <label>
                 Please enter in the following box and submit for confirmation:
                 <input type="text" id="otpInput" pattern="[0-9]{4}" placeholder="Enter OTP"
@@ -35,11 +43,8 @@
             <!--On clicking the button complete function is called for redirecting the page to pixel6 webpage-->
             <button type="reset" class="editbtn" id="validate">Validate</button>
         </div>
-    </Form>
-
-
+    </form>
     <script src="submit.js"></script>
-
 </body>
 
 </html>

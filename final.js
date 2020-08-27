@@ -104,7 +104,7 @@ function phCheck() {
 
 
 //This function is used to pass the value from html form page to validation page using local storage
-document.getElementById("submit").onclick = () => passValue();
+document.getElementById("submitIndex").onclick = () => passValue();
 
 function passValue() {
     var fullName = document.getElementById("fullName").value;
