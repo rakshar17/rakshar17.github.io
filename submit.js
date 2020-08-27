@@ -36,4 +36,4 @@ document.getElementById("validate").addEventListener("click", () => {
 
 //Local storage of name and number stored from previous page
 document.getElementById("nameCheck").innerHTML = localStorage.getItem("nameValue");
-document.getElementById("phoneNum").innerHTML = localStorage.getItem("phoneNumber");
+document.getElementById("phoneNumb").innerHTML = localStorage.getItem("phoneNumber");
