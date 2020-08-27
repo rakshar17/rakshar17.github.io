@@ -15,67 +15,30 @@
     <p id="fourDigit" class="random"></p>
 
     <Form action="">
-
         <h2>Validation Form</h2>
+        <div>
+            <label>
+                Dear <span id="nameCheck"></span>,<br><br>
+                Thank you for your enquiry.
+                A 4 digit verification number has been sent to your phone number: </label> <span id="phoneNum"></span>
+        </div>
+        <div>
 
-        <label>
-            Dear <span id="nameCheck"></span>,<br><br>
-            Thank you for your enquiry. <br><br>
-            A 4 digit verification number has been sent to your phone number: </label> <span id="phoneNum"></span>
-        <br><br>
+            <label>
+                Please enter in the following box and submit for confirmation:
+                <input type="text" id="otpInput" pattern="[0-9]{4}" placeholder="Enter OTP"
+                    title="Hint : 4 Digit Number" required>
+            </label>
+        </div>
 
-        <label>
-            Please enter in the following box and submit for confirmation:
-            <input type="text" id="otpInput" pattern="[0-9]{4}" placeholder="Enter OTP" title="Hint : 4 Digit Number"
-                required>
-        </label> <br><br>
-
-
-        <!--On clicking the button complete function is called for redirecting the page to pixel6 webpage-->
-        <button type="reset" class="editbtn" id="validate">Validate</button><br>
+        <div>
+            <!--On clicking the button complete function is called for redirecting the page to pixel6 webpage-->
+            <button type="reset" class="editbtn" id="validate">Validate</button>
+        </div>
     </Form>
 
 
-    <script>
-        //Generating 4 digit random number
-        document.getElementById("submitPage").onload = randomNum();
-
-        var storedigit;  //variable declaration to store the 4 digit randomly generated number
-
-        function randomNum() {
-            var fourdigitsrandom = Math.floor(1000 + Math.random() * 9000);
-            document.getElementById("fourDigit").innerText = fourdigitsrandom;
-            storedigit = fourdigitsrandom;
-        }
-
-        
-        var countClick = 3;
-        document.getElementById("validate").addEventListener("click", () => {
-            var compare = document.getElementById("otpInput").value;
-            var regx = /^[0-9]{4}$/;
-            if (compare.match(regx)) {
-                countClick -= 1;
-                //console.log(countClick);
-                               
-                if (compare == storedigit) {
-                    document.getElementById("submitPage").innerText = "Validation Successful!";
-                    window.location.replace("http://pixel6.co/");
-                }
-                else {
-                    alert("You have " + countClick + " attempt left.") 
-                    if (countClick == 0) {
-                        window.location.replace("http://pixel6.co/404");
-                    }
-                }
-            }
-        });
-
-
-
-        //Local storage of name and number stored from previous page
-        document.getElementById("nameCheck").innerHTML = localStorage.getItem("nameValue");
-        document.getElementById("phoneNum").innerHTML = localStorage.getItem("phoneNumber");
-    </script>
+    <script src="submit.js"></script>
 
 </body>
 

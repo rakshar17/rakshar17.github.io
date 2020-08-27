@@ -57,10 +57,11 @@ function phCheck() {
             }
             else {
                 document.getElementById("logo").alt = "Invalid ,";                
-                document.getElementById("submit").addEventListener("click",function(event){
-                    event.preventDefault();
-                });                  
-                       
+                document.getElementById("formSubmit").addEventListener("submit", function(event){
+                    event.preventDefault(); 
+                 alert("Invalid Number, Try Again!") 
+                window.location.reload();                                                
+                })      
             }
           
         }
@@ -72,133 +73,28 @@ function phCheck() {
             simPro = sliceNum.value;
             //console.log(b);
             var secondvalue = simPro.slice(6, 9);
-            var state;
-            switch (secondvalue) {
-                case "101":
-                    state = "Andhra Pradesh";
-                    break;
+            var array1 = ["","Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh", "Dadra and Nagar Haveli & Daman and Dui", "Delhi", "Jammu & Kashmir", "Ladakh", "Lakshadweep", "Puducherry"]              
 
-                case "102":
-                    state = "Arunachal Pradesh";
-                    break;
 
-                case "103":
-                    state = "Assam";
-                    break;
-
-                case "104":
-                    state = "Bihar";
-                    break;
-                case "105":
-                    state = "Chhattisgarh";
-                    break;
-                case "106":
-                    state = "Goa";
-                    break;
-                case "107":
-                    state = "Gujarat";
-                    break;
-                case "108":
-                    state = "Haryana";
-                    break;
-                case "109":
-                    state = "Himachal Pradesh";
-                    break;
-                case "110":
-                    state = "Jharkhand";
-                    break;
-                case "111":
-                    state = "Karnataka";
-                    break;
-                case "112":
-                    state = "Kerala";
-                    break;
-                case "113":
-                    state = "Madhya Pradesh";
-                    break;
-                case "114":
-                    state = "Maharashtra";
-                    break;
-                case "115":
-                    state = "Manipur";
-                    break;
-                case "116":
-                    state = "Meghalaya";
-                    break;
-
-                case "117":
-                    state = "Mizoram";
-                    break;
-                case "118":
-                    state = "Nagaland";
-                    break;
-                case "119":
-                    state = "Odisha";
-                    break;
-                case "120":
-                    state = "Punjab";
-                    break;
-                case "121":
-                    state = "Rajasthan";
-                    break;
-                case "122":
-                    state = "Skkim";
-                    break;
-                case "123":
-                    state = "Tamil Nadu";
-                    break;
-                case "124":
-                    state = "Telangana";
-                    break;
-                case "125":
-                    state = "Tripura";
-                    break;
-                case "126":
-                    state = "Uttarakhand";
-                    break;
-                case "127":
-                    state = "Uttar Pradesh";
-                    break;
-                case "128":
-                    state = "West Bengal";
-                    break;
-                case "129":
-                    state = "Andaman and Nicobar Islands";
-                    break;
-                case "130":
-                    state = "Chandigarh";
-                    break;
-                case "131":
-                    state = "Dadra and Nagar Haveli & Daman and Dui";
-                    break;
-                case "132":
-                    state = "Delhi";
-                    break;
-                case "133":
-                    state = "Jammu & Kashmir";
-                    break;
-                case "134":
-                    state = "Ladakh";
-                    break;
-                case "135":
-                    state = "Lakshadweep";
-                case "136":
-                    state = "Puducherry";
-                    break;
-                default:
-                   document.getElementById("submit").addEventListener("click", function(event){
-                       event.preventDefault();
-                   })
-              }      
-
-            document.getElementById("states").innerText = ( state); 
-        
-        }
-        
-        
-    }  
-   
-}
+            if (secondvalue > 100 && secondvalue < 110) {
+                index = simPro.slice(8, 9)
+                document.getElementById("states").innerText = array1[index];
+            }
+            else if (secondvalue >= 110 && secondvalue < 137) {
+                index = simPro.slice(7, 9);
+                document.getElementById("states").innerText = array1[index];
+            }
+            else {
+                document.getElementById("states").innerText = "Invalid State Code";
+                document.getElementById("formSubmit").addEventListener("submit", function(event){
+                    event.preventDefault(); 
+                 alert("Invalid State Code, Try Again!") 
+                window.location.reload();                                                
+                }) 
+            }
+        } 
+    }         
+}         
 
 
 
